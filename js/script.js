@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTheme(theme) {
         if (theme === 'light') {
             body.classList.add('light-theme');
-            if (themeToggle) themeToggle.textContent = '☀️';
+            if (themeToggle) themeToggle.textContent = '🌙';
             updateProfileImage('light');
         } else {
             body.classList.remove('light-theme');
-            if (themeToggle) themeToggle.textContent = '🌙';
+            if (themeToggle) themeToggle.textContent = '☀️';
             updateProfileImage('dark');
         }
     }

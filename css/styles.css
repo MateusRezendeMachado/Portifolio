@@ -629,3 +629,442 @@ body.light-theme .formacao-item.andamento .btn-download:hover {
     background: linear-gradient(90deg, #808080, #ffffff);
     border-radius: 2px;
 }
+
+/* Seção Projetos */
+.projects {
+    padding: 80px 10%;
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Grid de projetos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Cards clicáveis */
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 25px;
+    text-decoration: none; /* Remove sublinhado padrão */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Remove qualquer decoração de texto em todos os estados */
+.project-card,
+.project-card:hover,
+.project-card:focus,
+.project-card:active {
+    text-decoration: none;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #808080;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-title {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.project-desc {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.project-arrow {
+    font-size: 1.5rem;
+    color: #808080;
+    align-self: flex-end;
+    transition: transform 0.3s ease;
+    text-decoration: none; /* Garante que a flecha também não tenha sublinhado */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .projects {
+        padding: 60px 5%;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .project-card {
+        padding: 20px;
+    }
+    
+    .project-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .project-desc {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tema claro */
+body.light-theme .projects {
+    background-color: #f5f5f5;
+}
+
+body.light-theme .section-title {
+    color: #333333;
+}
+
+body.light-theme .project-card {
+    background: #ffffff;
+    border-color: #e0e0e0;
+}
+
+body.light-theme .project-card:hover {
+    background: #fafafa;
+    border-color: #666666;
+}
+
+body.light-theme .project-title {
+    color: #333333;
+}
+
+body.light-theme .project-desc {
+    color: #666666;
+}
+
+body.light-theme .project-arrow {
+    color: #666666;
+}
+
+/* =========================
+   SEÇÃO CONTATO
+========================= */
+
+.contact {
+    background-color: #1a1a1a; /* Tom mais claro que #121212 */
+    padding: 80px 10%;
+}
+
+
+.section-title {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #808080, #ffffff);
+    border-radius: 2px;
+}
+
+/* GRID */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* CARD */
+.contact-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px; /* Um pouco mais arredondado */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    height: 100%;
+    min-height: 200px; /* Um pouco maior para acomodar ícone */
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    border-color: #808080;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ÍCONE (usando classes para ícones, ex: Font Awesome) */
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(128, 128, 128, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    color: #808080;
+    font-size: 1.5rem; /* Para ícones de fonte */
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+    background: #808080;
+    color: #121212;
+}
+
+/* TÍTULO */
+.contact-card h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* CONTEÚDO (e-mail, telefone, etc) */
+.contact-content {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+/* LINKS (GitHub, LinkedIn) */
+.contact-link {
+    display: inline-block;
+    color: #808080;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 20px;
+    border: 1px solid #808080;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.contact-link:hover {
+    background: #808080;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(128, 128, 128, 0.3);
+}
+
+/* MENSAGEM FINAL */
+.contact-message {
+    text-align: center;
+    margin-top: 60px;
+    color: #9a9a9a;
+    font-size: 1rem;
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact {
+        padding: 60px 5%;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    
+    .contact-card {
+        min-height: 180px;
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .contact-content {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================
+   TEMA CLARO
+========================= */
+
+body.light-theme .contact {
+    background-color: #f5f5f5;
+}
+
+body.light-theme .section-title {
+    color: #333333;
+}
+
+body.light-theme .section-title::after {
+    background: linear-gradient(90deg, #666666, #333333);
+}
+
+body.light-theme .contact-card {
+    background: #ffffff;
+    border-color: #e0e0e0;
+}
+
+body.light-theme .contact-card:hover {
+    background: #fafafa;
+    border-color: #666666;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .contact-icon {
+    background: rgba(102, 102, 102, 0.1);
+    color: #666666;
+}
+
+body.light-theme .contact-card:hover .contact-icon {
+    background: #666666;
+    color: #ffffff;
+}
+
+body.light-theme .contact-card h3 {
+    color: #333333;
+}
+
+body.light-theme .contact-content {
+    color: #666666;
+}
+
+body.light-theme .contact-link {
+    border-color: #666666;
+    color: #666666;
+}
+
+body.light-theme .contact-link:hover {
+    background: #666666;
+    color: #ffffff;
+}
+
+body.light-theme .contact-message {
+    color: #888888;
+    border-top-color: #e0e0e0;
+}
+
+.footer {
+    background-color: #0a0a0a; /* um tom mais escuro para diferenciar */
+    color: #888;
+    padding: 30px 10%;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer p {
+    font-size: 0.95rem;
+    color: #888;
+    margin: 0;
+}
+
+.footer-social {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-social a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .footer {
+        padding: 25px 5%;
+    }
+    .footer-social {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-social {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

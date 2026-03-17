@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileImg = document.getElementById('profileImage');
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.menu-link');
+    const dropdownBtn = document.querySelector('.btn-curriculo-dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
 
     // ==================== TRADUÇÕES ====================
     const translations = {
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'menu-sobre': 'Sobre',
             'menu-formacao': 'Formação',
             'menu-projetos': 'Projetos',
+            'btn-curriculo': 'Currículo',
             'menu-contato': 'Contato',
             'sobre-titulo': 'Sobre Mim',
             'sobre-p1': 'Olá! Meu nome é Mateus Rezende Machado e sou estudante de Sistemas para Internet no Instituto Federal do Triângulo Mineiro (IFTM). Tenho formação técnica em Internet das Coisas (IoT) e experiência em desenvolvimento web, com foco em front-end utilizando HTML, CSS, JavaScript e React.',
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'menu-sobre': 'About',
             'menu-formacao': 'Education',
             'menu-projetos': 'Projects',
+            'btn-curriculo': 'Resume',
             'menu-contato': 'Contact',
             'sobre-titulo': 'About Me',
             'sobre-p1': 'Hi! My name is Mateus Rezende Machado and I am a student of Internet Systems at the Federal Institute of Triângulo Mineiro (IFTM). I hold a technical degree in Internet of Things (IoT) and have experience in web development, with a focus on front-end technologies such as HTML, CSS, JavaScript, and React.',
@@ -84,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.textContent = translations[lang][key];
             }
         });
-        // Atualiza o texto do botão
         if (langToggle) {
             langToggle.textContent = lang === 'pt' ? 'English' : 'Português';
         }
@@ -143,11 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================== INICIALIZAÇÃO ====================
-    // Tema salvo
     const savedTheme = localStorage.getItem('theme');
     applyTheme(savedTheme === 'light' ? 'light' : 'dark');
 
-    // Idioma salvo
     const savedLang = localStorage.getItem('lang');
     if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
         changeLanguage(savedLang);
@@ -168,6 +169,20 @@ document.addEventListener('DOMContentLoaded', () => {
         langToggle.addEventListener('click', () => {
             const newLang = currentLang === 'pt' ? 'en' : 'pt';
             changeLanguage(newLang);
+        });
+    }
+
+    // Dropdown do currículo
+    if (dropdownBtn && dropdownContent) {
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdownBtn.contains(e.target) && !dropdownContent.contains(e.target)) {
+                dropdownContent.classList.remove('show');
+            }
         });
     }
 
@@ -202,11 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Visibilidade inicial
     checkVisibility();
 
-    // Listeners de scroll e resize
     window.addEventListener('scroll', () => {
         checkVisibility();
         updateActiveLink();
     });
+
     window.addEventListener('resize', checkVisibility);
 
     // Parallax opcional

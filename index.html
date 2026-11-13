@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculo Mateus Machado</title>
+    <title>Currículo Mateus Machado</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap"
@@ -23,7 +23,7 @@
                 <ul class="menu">
                     <!-- Esquerda: idioma -->
                     <li class="lang-toggle">
-                        <button id="langToggle" class="lang-btn" aria-label="Trocar idioma">English</button>
+                        <button id="langToggle" class="lang-btn" data-i18n-aria="aria-idioma" aria-label="Mudar para inglês">English</button>
                     </li>
 
                     <!-- Centro: links de navegação -->
@@ -38,7 +38,7 @@
 
                     <!-- Direita: tema -->
                     <li class="theme-toggle">
-                        <button id="themeToggle" class="theme-btn" aria-label="Alternar tema">☀️</button>
+                        <button id="themeToggle" class="theme-btn" data-i18n-aria="aria-tema" aria-label="Alternar tema">☀️</button>
                     </li>
                 </ul>
             </div>
@@ -60,7 +60,7 @@
                     conhecimentos que adquiro ao longo da minha formação.</p>
             </div>
             <div class="sobre-imagem">
-                <img src="img/perfil-escuro.jpg" alt="Foto de perfil" class="profile-pic" id="profileImage">
+                <img src="img/perfil-escuro.jpg" alt="Foto de perfil" data-i18n-alt="alt-perfil" class="profile-pic" id="profileImage">
 
                 <div class="curriculo-dropdown">
                     <button class="btn-curriculo-dropdown">
@@ -68,8 +68,8 @@
                         <span data-i18n="btn-curriculo">Currículo</span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="docs/curriculo-mateus-pt.pdf" download>🇧🇷 Português</a>
-                        <a href="docs/curriculo-mateus-en.pdf" download>🇺🇸 English</a>
+                        <a href="docs/curriculo-mateus-pt.pdf" download="Curriculo-Mateus-Rezende-Machado.pdf" data-i18n="curriculo-pt">🇧🇷 Português</a>
+                        <a href="docs/curriculo-mateus-en.pdf" download="Resume-Mateus-Rezende-Machado.pdf" data-i18n="curriculo-en">🇺🇸 Inglês</a>
                     </div>
                 </div>
             </div>
@@ -84,8 +84,8 @@
                     <div class="formacao-header">
                         <span class="status-badge concluido" data-i18n="concluido">✓ Concluído</span>
                     </div>
-                    <h3>Técnico em Internet das Coisas (IoT)</h3>
-                    <p class="instituicao">Instituto Federal do Triângulo Mineiro (IFTM)</p>
+                    <h3 data-i18n="formacao-iot">Técnico em Internet das Coisas (IoT)</h3>
+                    <p class="instituicao" data-i18n="instituicao-iftm">Instituto Federal do Triângulo Mineiro (IFTM)</p>
                     <p class="periodo">2021 – 2023</p>
                     <div class="formacao-actions">
                         <a href="docs/comprovante-tecnico-iot.pdf" download class="btn-download">
@@ -99,8 +99,8 @@
                     <div class="formacao-header">
                         <span class="status-badge concluido" data-i18n="concluido">✓ Concluído</span>
                     </div>
-                    <h3>Inglês – Nível Intermediário</h3>
-                    <p class="instituicao">Instituto Federal do Triângulo Mineiro (IFTM)</p>
+                    <h3 data-i18n="formacao-ingles-inter">Inglês – Nível Intermediário</h3>
+                    <p class="instituicao" data-i18n="instituicao-iftm">Instituto Federal do Triângulo Mineiro (IFTM)</p>
                     <p class="periodo">2021 – 2023</p>
                     <div class="formacao-actions">
                         <a href="docs/certificado-ingles-intermediario.pdf" download class="btn-download">
@@ -114,9 +114,9 @@
                     <div class="formacao-header">
                         <span class="status-badge andamento" data-i18n="andamento">⏳ Em andamento</span>
                     </div>
-                    <h3>Sistemas para Internet</h3>
-                    <p class="instituicao">Instituto Federal do Triângulo Mineiro (IFTM)</p>
-                    <p class="periodo">2025 – Atual</p>
+                    <h3 data-i18n="formacao-sistemas">Sistemas para Internet</h3>
+                    <p class="instituicao" data-i18n="instituicao-iftm">Instituto Federal do Triângulo Mineiro (IFTM)</p>
+                    <p class="periodo" data-i18n="periodo-sistemas">2025 – Atual</p>
                     <div class="formacao-actions">
                         <a href="docs/comprovante-matricula-sistemas.pdf" download class="btn-download">
                             <span class="btn-icon">📋</span>
@@ -129,9 +129,9 @@
                     <div class="formacao-header">
                         <span class="status-badge andamento" data-i18n="andamento">⏳ Em andamento</span>
                     </div>
-                    <h3>Curso de Inglês - Avançado</h3>
+                    <h3 data-i18n="formacao-ingles-avancado">Curso de Inglês – Avançado</h3>
                     <p class="instituicao">CNI (Centro Nacional de Idiomas)</p>
-                    <p class="periodo">2026 - Atual</p>
+                    <p class="periodo" data-i18n="periodo-ingles">2026 – Atual</p>
                     <div class="formacao-actions">
                         <a href="docs/comprovante-matricula-ingles.pdf" download class="btn-download">
                             <span class="btn-icon">📋</span>
@@ -156,7 +156,7 @@
                     <span class="project-arrow">→</span>
                 </a>
                 <a href="https://memorygamemrm.netlify.app/login.html" target="_blank" class="project-card">
-                    <span class="project-title">Jogo da Memória</span>
+                    <span class="project-title" data-i18n="memoria-titulo">Jogo da Memória</span>
                     <span class="project-desc" data-i18n="memoria-desc">Projeto 2º semestre</span>
                     <span class="project-arrow">→</span>
                 </a>
@@ -166,23 +166,23 @@
                     <span class="project-arrow">→</span>
                 </a>
                 <a href="https://tmdbapimateus.netlify.app/" target="_blank" class="project-card">
-                    <span class="project-title">Filmes Populares do TMDB</span>
+                    <span class="project-title" data-i18n="tmdb-titulo">Filmes Populares do TMDB</span>
                     <span class="project-desc" data-i18n="tmdb-desc">Projeto utilizando a API do The Movie Database</span>
                     <span class="project-arrow">→</span>
                 </a>
                 <a href="https://stiquifar.netlify.app/" target="_blank" class="project-card">
                     <span class="project-title">STIQUIFAR</span>
-                    <span class="project-desc" data-i18n="tmdb-desc">Projeto de Ladding Page com cliente real</span>
+                    <span class="project-desc" data-i18n="stiquifar-desc">Landing page desenvolvida para um cliente real</span>
                     <span class="project-arrow">→</span>
                 </a>
                  <a href="https://cartelabingorenata.netlify.app/" target="_blank" class="project-card">
-                    <span class="project-title">Gerador de cartelas de bingo</span>
-                    <span class="project-desc" data-i18n="tmdb-desc">Projeto pessoal</span>
+                    <span class="project-title" data-i18n="bingo-titulo">Gerador de cartelas de bingo</span>
+                    <span class="project-desc" data-i18n="bingo-desc">Projeto pessoal</span>
                     <span class="project-arrow">→</span>
                 </a>
                     <a href="https://caporaleadvogados.netlify.app/" target="_blank" class="project-card">
                     <span class="project-title">Caporale Advogados</span>
-                    <span class="project-desc" data-i18n="tmdb-desc">Ladding Page para um escritório de advocacia</span>
+                    <span class="project-desc" data-i18n="caporale-desc">Landing page para um escritório de advocacia</span>
                     <span class="project-arrow">→</span>
                 </a>
                 

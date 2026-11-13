@@ -30,6 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
             'breakingbad-desc': 'Projeto desenvolvido no 1º semestre',
             'memoria-desc': 'Projeto desenvolvido no 2º semestre',
             'estagio-desc': 'Projeto desenvolvido durante estágio',
+            'tmdb-desc': 'Projeto utilizando a API do The Movie Database',
+            'stiquifar-desc': 'Landing page desenvolvida para um cliente real',
+            'bingo-desc': 'Projeto pessoal',
+            'caporale-desc': 'Landing page para um escritório de advocacia',
+            'memoria-titulo': 'Jogo da Memória',
+            'tmdb-titulo': 'Filmes Populares do TMDB',
+            'bingo-titulo': 'Gerador de cartelas de bingo',
+            'formacao-iot': 'Técnico em Internet das Coisas (IoT)',
+            'formacao-ingles-inter': 'Inglês – Nível Intermediário',
+            'formacao-sistemas': 'Sistemas para Internet',
+            'formacao-ingles-avancado': 'Curso de Inglês – Avançado',
+            'instituicao-iftm': 'Instituto Federal do Triângulo Mineiro (IFTM)',
+            'periodo-sistemas': '2025 – Atual',
+            'periodo-ingles': '2026 – Atual',
+            'curriculo-pt': '🇧🇷 Português',
+            'curriculo-en': '🇺🇸 Inglês',
+            'page-title': 'Currículo Mateus Machado',
+            'aria-idioma': 'Mudar para inglês',
+            'aria-tema': 'Alternar tema',
+            'alt-perfil': 'Foto de perfil',
             'contato-titulo': 'Entre em Contato',
             'contato-email': 'E-mail',
             'contato-telefone': 'Telefone',
@@ -62,6 +82,26 @@ document.addEventListener('DOMContentLoaded', () => {
             'breakingbad-desc': 'Project developed during the 1st semester',
             'memoria-desc': 'Project developed during the 2nd semester',
             'estagio-desc': 'Project developed during internship',
+            'tmdb-desc': 'Project using The Movie Database API',
+            'stiquifar-desc': 'Landing page built for a real client',
+            'bingo-desc': 'Personal project',
+            'caporale-desc': 'Landing page for a law firm',
+            'memoria-titulo': 'Memory Game',
+            'tmdb-titulo': 'TMDB Popular Movies',
+            'bingo-titulo': 'Bingo Card Generator',
+            'formacao-iot': 'Technical Course in Internet of Things (IoT)',
+            'formacao-ingles-inter': 'English – Intermediate Level',
+            'formacao-sistemas': 'Technology Degree in Internet Systems',
+            'formacao-ingles-avancado': 'English Course – Advanced',
+            'instituicao-iftm': 'Federal Institute of Triângulo Mineiro (IFTM)',
+            'periodo-sistemas': '2025 – Present',
+            'periodo-ingles': '2026 – Present',
+            'curriculo-pt': '🇧🇷 Portuguese',
+            'curriculo-en': '🇺🇸 English',
+            'page-title': 'Mateus Machado – Resume',
+            'aria-idioma': 'Switch to Portuguese',
+            'aria-tema': 'Toggle theme',
+            'alt-perfil': 'Profile photo',
             'contato-titulo': 'Get in Touch',
             'contato-email': 'Email',
             'contato-telefone': 'Phone',
@@ -77,21 +117,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const SUPPORTED_LANGS = ['pt', 'en'];
     let currentLang = 'pt';
 
     // ==================== FUNÇÕES DE IDIOMA ====================
-    function changeLanguage(lang) {
+    // Lê/grava a preferência sem quebrar se o localStorage estiver bloqueado
+    function readStored(key) {
+        try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
+
+    function writeStored(key, value) {
+        try { localStorage.setItem(key, value); } catch (e) { /* ignora */ }
+    }
+
+    // Ordem de prioridade: ?lang= na URL > escolha salva > idioma do navegador
+    function detectLanguage() {
+        const fromUrl = new URLSearchParams(window.location.search).get('lang');
+        if (SUPPORTED_LANGS.includes(fromUrl)) return fromUrl;
+
+        const saved = readStored('lang');
+        if (SUPPORTED_LANGS.includes(saved)) return saved;
+
+        const browserLangs = navigator.languages || [navigator.language || 'pt'];
+        return browserLangs.some(l => l.toLowerCase().startsWith('pt')) ? 'pt' : 'en';
+    }
+
+    function applyLanguage(lang) {
+        const dict = translations[lang];
+        if (!dict) return;
         currentLang = lang;
+
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+        document.title = dict['page-title'];
+
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                el.textContent = translations[lang][key];
-            }
+            const text = dict[el.dataset.i18n];
+            if (text) el.textContent = text;
         });
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+            const text = dict[el.dataset.i18nAria];
+            if (text) el.setAttribute('aria-label', text);
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            const text = dict[el.dataset.i18nAlt];
+            if (text) el.setAttribute('alt', text);
+        });
+
+        // O botão mostra o idioma para o qual a página vai mudar
         if (langToggle) {
             langToggle.textContent = lang === 'pt' ? 'English' : 'Português';
         }
-        localStorage.setItem('lang', lang);
+    }
+
+    // Troca feita pelo usuário: aplica e guarda a escolha
+    function changeLanguage(lang) {
+        applyLanguage(lang);
+        writeStored('lang', lang);
     }
 
     // ==================== FUNÇÕES DE TEMA E IMAGEM ====================
@@ -146,22 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================== INICIALIZAÇÃO ====================
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = readStored('theme');
     applyTheme(savedTheme === 'light' ? 'light' : 'dark');
 
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
-        changeLanguage(savedLang);
-    } else {
-        changeLanguage('pt');
-    }
+    applyLanguage(detectLanguage());
 
     // ==================== EVENTOS ====================
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const isLight = body.classList.contains('light-theme');
             applyTheme(isLight ? 'dark' : 'light');
-            localStorage.setItem('theme', isLight ? 'dark' : 'light');
+            writeStored('theme', isLight ? 'dark' : 'light');
         });
     }
 
